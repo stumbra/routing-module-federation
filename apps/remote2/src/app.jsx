@@ -13,15 +13,6 @@ export default function App() {
       </nav>
       <Routes>
         <Route
-          index
-          element={
-            <div className="home page">
-              This is the home view from remote2. Click the links above to
-              navigate.
-            </div>
-          }
-        />
-        <Route
           path="page-a"
           element={<div className="page-a page">This is page A in remote2</div>}
         />

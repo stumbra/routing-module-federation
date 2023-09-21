@@ -6,28 +6,26 @@ import "./styles.css";
 export default function App() {
   return (
     <div className="app">
-      <h2>This the root view in Remote1</h2>
+      <h2>This the root view in Homepage</h2>
       <nav className="horizontal-nav">
-        <Link to="page-a">Remote1/Page A</Link>
-        <Link to="page-b">Remote1/Page B</Link>
+        <Link to="">Homepage</Link>
+        <Link to="energy-consumption">Energy Consumption</Link>
+        <Link to="charging-behaviour">Charging Behaviour</Link>
+        <Link to="charger-health">Charger Health</Link>
       </nav>
       <Routes>
+        <Route index element={<div className="page">Homepage Component</div>} />
         <Route
-          index
-          element={
-            <div className="home page">
-              This is the home view from remote1. Click the links above to
-              navigate.
-            </div>
-          }
+          path="energy-consumption"
+          element={<div className="page">Energy Consumption Component</div>}
         />
         <Route
-          path="page-a"
-          element={<div className="page-a page">This is page A in remote1</div>}
+          path="/charging-behaviour"
+          element={<div className="page">Charging Behaviour Component</div>}
         />
         <Route
-          path="page-b"
-          element={<div className="page-b page">This is page B in remote1</div>}
+          path="/charger-health"
+          element={<div className="page">Charger Health Component</div>}
         />
       </Routes>
     </div>

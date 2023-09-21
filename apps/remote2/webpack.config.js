@@ -17,7 +17,7 @@ module.exports = async (_, { mode = "development" }) => {
     },
     devServer: {
       hot: true,
-      open: ["/remote2"],
+      open: ["/"],
       historyApiFallback: true,
       static: {
         directory: path.join(__dirname, "src", "public"),
