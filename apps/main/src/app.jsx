@@ -6,6 +6,7 @@ import Home from './pages/home';
 import './styles.css';
 
 const RemoteRootApp1 = React.lazy(() => import('remote1/RemoteRootApp1'))
+const RemoteRootApp2 = React.lazy(() => import('remote2/RemoteRootApp2'))
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Link to="/page-a">Main/Page A</Link>
         <Link to="/page-b">Main/Page B</Link>
         <Link to="/remote1">Remote1</Link>
+        <Link to="/remote2">Remote2</Link>
       </nav>
       <React.Suspense fallback="Loading">
         <Routes>
@@ -23,6 +25,7 @@ export default function App() {
           <Route path="/page-a" element={<PageA />} />
           <Route path="/page-b" element={<PageB />} />
           <Route path="/remote1/*" element={<RemoteRootApp1 />} />
+          <Route path="/remote2/*" element={<RemoteRootApp2 />} />
         </Routes>
       </React.Suspense>
     </div>

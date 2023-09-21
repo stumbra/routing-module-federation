@@ -17,18 +17,16 @@ module.exports = async (_, { mode = 'development' }) => {
     },
     devServer: {
       hot: true,
-      open: true,
+      open: ['/remote2'],
       historyApiFallback: true,
       static: {
         directory: path.join(__dirname, 'src', 'public'),
       },
       compress: true,
-      port: 8000,
+      port: 9001,
     },
     resolve: {
-      modules: [
-        path.join(__dirname, 'src'), 'node_modules'
-      ],
+      modules: [path.join(__dirname, 'src'), 'node_modules'],
       extensions: ['.css', '.js', '.jsx', '.scss'],
     },
     module: {
@@ -56,8 +54,11 @@ module.exports = async (_, { mode = 'development' }) => {
       }),
 
       new ModuleFederationPlugin({
-        name: 'Main',
-        filename: 'js/main-app-entry.js',
+        name: 'RemoteApp2',
+        filename: 'js/remote2-app-entry.js',
+        exposes: {
+          './RemoteRootApp2': './src/app.jsx',
+        },
         shared: [
           {
             react: {
@@ -76,11 +77,7 @@ module.exports = async (_, { mode = 'development' }) => {
               eager: true,
             },
           } 
-        ],
-        remotes: {
-          'remote1': 'RemoteApp1@http://localhost:9000/js/remote1-app-entry.js',
-          'remote2': 'RemoteApp2@http://localhost:9001/js/remote2-app-entry.js'
-        }
+        ]
       })
     ],
   };
