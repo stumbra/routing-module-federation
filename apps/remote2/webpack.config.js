@@ -17,7 +17,7 @@ module.exports = async (_, { mode = "development" }) => {
     },
     devServer: {
       hot: true,
-      open: ["/"],
+      open: ["/card-management"],
       historyApiFallback: true,
       static: {
         directory: path.join(__dirname, "src", "public"),
