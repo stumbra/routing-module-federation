@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
-import PageA from './pages/page-a';
-import PageB from './pages/page-b';
-import Home from './pages/home';
+
 import './styles.css';
 
 export default function App() {
@@ -14,9 +12,15 @@ export default function App() {
         <Link to="page-b">Remote2/Page B</Link>
       </nav>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="page-a" element={<PageA />} />
-        <Route path="page-b" element={<PageB />} />
+      <Route index element={<div className='home page'>
+    This is the home view from remote2. Click the links above to navigate.
+  </div>} />
+        <Route path="page-a" element={<div className='page-a page'>
+    This is page A in remote2
+  </div>} />
+        <Route path="page-b" element={<div className='page-b page'>
+    This is page B in remote2
+  </div>} />
       </Routes>
     </div>
   );
