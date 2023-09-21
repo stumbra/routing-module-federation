@@ -56,8 +56,8 @@ module.exports = async (_, { mode = 'development' }) => {
       }),
 
       new ModuleFederationPlugin({
-        name: 'HostApp',
-        filename: 'js/host-app-entry.js',
+        name: 'Main',
+        filename: 'js/main-app-entry.js',
         shared: [
           {
             react: {
