@@ -1,18 +1,18 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { webpack } = require('webpack');
-const { ModuleFederationPlugin } = require('webpack').container;
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { webpack } = require("webpack");
+const { ModuleFederationPlugin } = require("webpack").container;
 
-module.exports = async (_, { mode = 'development' }) => {
+module.exports = async (_, { mode = "development" }) => {
   return {
-    entry: path.join(__dirname, 'src', 'index.jsx'),
-    target: 'web',
+    entry: path.join(__dirname, "src", "index.jsx"),
+    target: "web",
     mode,
     output: {
-      path: path.join(__dirname, 'build'),
-      publicPath: 'auto',
-      chunkFilename: 'js/[id].[contenthash].js',
-      filename: 'js/[name].[contenthash].js',
+      path: path.join(__dirname, "build"),
+      publicPath: "auto",
+      chunkFilename: "js/[id].[contenthash].js",
+      filename: "js/[name].[contenthash].js",
       clean: true,
     },
     devServer: {
@@ -20,16 +20,14 @@ module.exports = async (_, { mode = 'development' }) => {
       open: true,
       historyApiFallback: true,
       static: {
-        directory: path.join(__dirname, 'src', 'public'),
+        directory: path.join(__dirname, "src", "public"),
       },
       compress: true,
       port: 8000,
     },
     resolve: {
-      modules: [
-        path.join(__dirname, 'src'), 'node_modules'
-      ],
-      extensions: ['.css', '.js', '.jsx', '.scss'],
+      modules: [path.join(__dirname, "src"), "node_modules"],
+      extensions: [".css", ".js", ".jsx", ".scss"],
     },
     module: {
       rules: [
@@ -37,51 +35,51 @@ module.exports = async (_, { mode = 'development' }) => {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
+              presets: ["@babel/preset-env", "@babel/preset-react"],
             },
           },
         },
         {
           test: /\.css$/,
-          include: path.resolve(__dirname, 'src'),
-          use: ['style-loader', 'css-loader'],
+          include: path.resolve(__dirname, "src"),
+          use: ["style-loader", "css-loader"],
         },
       ],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.join(__dirname, 'src', 'public', 'index.html'),
+        template: path.join(__dirname, "src", "public", "index.html"),
       }),
 
       new ModuleFederationPlugin({
-        name: 'Main',
-        filename: 'js/main-app-entry.js',
+        name: "Main",
+        filename: "js/main-app-entry.js",
         shared: [
           {
             react: {
-              requiredVersion: '^18.2.0',
+              requiredVersion: "^18.2.0",
               singleton: true,
               eager: true,
             },
-            'react-dom': {
-              requiredVersion: '^18.2.0',
+            "react-dom": {
+              requiredVersion: "^18.2.0",
               singleton: true,
               eager: true,
             },
-            'react-router-dom': {
-              requiredVersion: '^6.3.0',
+            "react-router-dom": {
+              requiredVersion: "^6.3.0",
               singleton: true,
               eager: true,
             },
-          } 
+          },
         ],
         remotes: {
-          'remote1': 'RemoteApp1@http://localhost:9000/js/remote1-app-entry.js',
-          'remote2': 'RemoteApp2@http://localhost:9001/js/remote2-app-entry.js'
-        }
-      })
+          remote1: "RemoteApp1@http://localhost:9000/js/remote1-app-entry.js",
+          remote2: "RemoteApp2@http://localhost:9001/js/remote2-app-entry.js",
+        },
+      }),
     ],
   };
 };
