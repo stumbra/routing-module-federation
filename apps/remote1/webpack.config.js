@@ -17,7 +17,7 @@ module.exports = async (_, { mode = 'development' }) => {
     },
     devServer: {
       hot: true,
-      open: ['/remote'],
+      open: ['/remote1'],
       historyApiFallback: true,
       static: {
         directory: path.join(__dirname, 'src', 'public'),
@@ -54,10 +54,10 @@ module.exports = async (_, { mode = 'development' }) => {
       }),
 
       new ModuleFederationPlugin({
-        name: 'RemoteApp',
-        filename: 'js/remote-app-entry.js',
+        name: 'RemoteApp1',
+        filename: 'js/remote1-app-entry.js',
         exposes: {
-          './RemoteRootApp': './src/app.jsx',
+          './RemoteRootApp1': './src/app.jsx',
         },
         shared: [
           {

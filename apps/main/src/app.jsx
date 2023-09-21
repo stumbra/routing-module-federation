@@ -5,7 +5,7 @@ import PageB from './pages/page-b';
 import Home from './pages/home';
 import './styles.css';
 
-const RemoteRootApp = React.lazy(() => import('remote/RemoteRootApp'))
+const RemoteRootApp1 = React.lazy(() => import('remote1/RemoteRootApp1'))
 
 export default function App() {
   return (
@@ -15,14 +15,14 @@ export default function App() {
       <nav className="horizontal-nav">
         <Link to="/page-a">Main/Page A</Link>
         <Link to="/page-b">Main/Page B</Link>
-        <Link to="/remote">Remote</Link>
+        <Link to="/remote1">Remote1</Link>
       </nav>
       <React.Suspense fallback="Loading">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/page-a" element={<PageA />} />
           <Route path="/page-b" element={<PageB />} />
-          <Route path="/remote/*" element={<RemoteRootApp />} />
+          <Route path="/remote1/*" element={<RemoteRootApp1 />} />
         </Routes>
       </React.Suspense>
     </div>

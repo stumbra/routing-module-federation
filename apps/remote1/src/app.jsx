@@ -8,10 +8,10 @@ import './styles.css';
 export default function App() {
   return (
     <div className="app">
-      <h2>This the root view in Remote</h2>
+      <h2>This the root view in Remote1</h2>
       <nav className="horizontal-nav">
-        <Link to="page-a">Remote/Page A</Link>
-        <Link to="page-b">Remote/Page B</Link>
+        <Link to="page-a">Remote1/Page A</Link>
+        <Link to="page-b">Remote1/Page B</Link>
       </nav>
       <Routes>
         <Route index element={<Home />} />
