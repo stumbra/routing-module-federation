@@ -76,8 +76,8 @@ module.exports = async (_, { mode = "development" }) => {
           },
         ],
         remotes: {
-          remote1: "RemoteApp1@http://localhost:9000/js/remote1-app-entry.js",
-          remote2: "RemoteApp2@http://localhost:9001/js/remote2-app-entry.js",
+          homepage: "Homepage@http://localhost:9000/js/homepage-app-entry.js",
+          manage: "Manage@http://localhost:9001/js/manage-app-entry.js",
         },
       }),
     ],

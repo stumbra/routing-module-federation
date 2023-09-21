@@ -54,10 +54,10 @@ module.exports = async (_, { mode = "development" }) => {
       }),
 
       new ModuleFederationPlugin({
-        name: "RemoteApp2",
-        filename: "js/remote2-app-entry.js",
+        name: "Manage",
+        filename: "js/manage-app-entry.js",
         exposes: {
-          "./RemoteRootApp2": "./src/app.jsx",
+          "./App": "./src/app.jsx",
         },
         shared: [
           {
